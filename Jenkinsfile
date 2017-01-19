@@ -1,7 +1,7 @@
 #!groovy
 node {
    stage 'Stage 1'
-   echo 'Hello World 1'
+   echo 'Hello World 1', concurrency 1
    input 'Please decide if if should go further?'
 
    stage 'Stage 2'
@@ -17,6 +17,8 @@ node {
    sh 'sleep 10'
    
    stage 'Stage 6 - Checkout'
+   def mvnHome = tool 'Maven 3.3.9'
+   sh "${mvnHome}/bin/mvn -B verify"
    git 'https://github.com/natburkova/game-of-life'
    
 }
