@@ -1,7 +1,7 @@
 #!groovy
 node {
    stage 'Stage 1'
-   echo 'Hello World 1', concurrency 1
+   echo 'Hello World 1'
    input 'Please decide if if should go further?'
 
    stage 'Stage 2'
