@@ -26,12 +26,12 @@ node {
    withMaven {sh 'mvn clean install'}
    }
    
-   stage 'Stage 10 - test parallel'
-   parallel 
-   first branch: 
-   {node {echo "hello here1!"}
-   }, 
-   second branch: 
-   {node {echo "hello here2!"}
-   }
+   stage 'Parallel test'
+   parallel (
+   first branch: { node {
+   echo "hello here1!"
+   }}, 
+   second branch: { node {
+   echo "hello here2!"
+   }})
 }
