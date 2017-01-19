@@ -13,4 +13,9 @@ node {
    stage 'Stage 4'
    build job: 'hello-task', parameters: [[$class: 'StringParameterValue', name: 'CoolParam', value: 'hello']
    ]
+   stage 'Stage 5'
+   sh 'sleep 10'
+   stage 'Stage 6 - Checkout'
+   git https://github.com/natburkova/game-of-life
+   
 }
