@@ -17,12 +17,7 @@ node {
    sh 'sleep 10'
    
    stage 'Stage 6 - Checkout'
-   def mvnHome = tool 'Maven 3.3.9'
-   
    stage 'Stage 7 - Checkout'
-   
-   def mvnHome = tool 'Maven 3.3.9'
-   
    git 'https://github.com/natburkova/game-of-life'
    
 }
