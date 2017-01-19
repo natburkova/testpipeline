@@ -9,4 +9,8 @@ node {
 
    stage 'Stage 3'
    echo 'Hello World 3'
+
+   stage 'Stage 4'
+   build job: 'hello-task', parameters: [[$class: 'StringParameterValue', name: 'CoolParam', value: 'hello']
+   ]
 }
