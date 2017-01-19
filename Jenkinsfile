@@ -19,6 +19,6 @@ node {
    stage 'Stage 7 - Checkout'
    git 'https://github.com/natburkova/game-of-life'
    
-   stage 8 'echo taks'
+   stage 'Stage 8 - 'echo task'
    echo env.PATH
 }
