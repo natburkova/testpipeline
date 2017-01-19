@@ -23,5 +23,5 @@ node {
    echo "hello there!"
    
    stage 'Stage 9 - Installation'
-   mvn {sh 'mvn clean install'}
+   withMaven {sh 'mvn clean install'}
    }
