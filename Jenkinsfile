@@ -17,6 +17,6 @@ node {
    sh 'sleep 10'
    
    stage 'Stage 6 - Checkout'
-   git https://github.com/natburkova/game-of-life
+   git 'https://github.com/natburkova/game-of-life'
    
 }
