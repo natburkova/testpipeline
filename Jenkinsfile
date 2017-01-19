@@ -28,10 +28,10 @@ node {
    
    stage 'Parallel test'
    parallel (
-   first branch: { node {
+   first_branch: { node {
    echo "hello here1!"
    }}, 
-   second branch: { node {
+   second_branch: { node {
    echo "hello here2!"
    }})
 }
