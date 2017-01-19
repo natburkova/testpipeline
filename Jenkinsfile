@@ -2,6 +2,7 @@
 node {
    stage 'Stage 1'
    echo 'Hello World 1'
+   input 'Ready to go?'
 
    stage 'Stage 2'
    echo 'Hello World 2'
