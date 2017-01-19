@@ -16,7 +16,6 @@ node {
    stage 'Stage 5'
    sh 'sleep 10'
    
-   stage 'Stage 6 - Checkout'
    stage 'Stage 7 - Checkout'
    git 'https://github.com/natburkova/game-of-life'
    
