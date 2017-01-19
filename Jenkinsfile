@@ -24,7 +24,7 @@ node {
    
    stage 'Stage 9 - Installation'
    withMaven {sh 'mvn clean install'}
-   }
+   
    
    stage 'Parallel test'
    parallel (
