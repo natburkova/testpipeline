@@ -24,7 +24,7 @@ node {
    
    stage 'Stage 9 - Installation'
    withMaven {sh 'mvn clean install'}
-   
+ }  
    
    stage 'Parallel test'
    parallel (
@@ -34,4 +34,3 @@ node {
    second_branch: { node {
    echo "hello here2!"
    }})
-}
