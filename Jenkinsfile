@@ -20,5 +20,4 @@ node {
    git 'https://github.com/natburkova/game-of-life'
    
    stage 'Stage 8 - 'echo task'
-   echo env.PATH
-}
+   echo "hello there!"
