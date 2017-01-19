@@ -21,3 +21,4 @@ node {
    
    stage 'Stage 8 - echo task'
    echo "hello there!"
+   }
