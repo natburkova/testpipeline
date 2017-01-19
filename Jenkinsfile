@@ -21,4 +21,7 @@ node {
    
    stage 'Stage 8 - echo task'
    echo "hello there!"
+   
+   state 'Installation'
+   mvn {sh 'mvn clean install'}
    }
