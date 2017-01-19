@@ -19,5 +19,5 @@ node {
    stage 'Stage 7 - Checkout'
    git 'https://github.com/natburkova/game-of-life'
    
-   stage 'Stage 8 - 'echo task'
+   stage 'Stage 8 - echo task'
    echo "hello there!"
