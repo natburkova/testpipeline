@@ -20,6 +20,5 @@ node {
    git 'https://github.com/natburkova/game-of-life'
    
    stage 8 'echo taks'
-   echo env.PATH > 'D:\TEMP\pipe.txt'
-   
+   echo env.PATH
 }
