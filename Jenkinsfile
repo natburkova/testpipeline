@@ -25,3 +25,13 @@ node {
    stage 'Stage 9 - Installation'
    withMaven {sh 'mvn clean install'}
    }
+   
+   stage 'Stage 9 - Installation'
+   parallel 
+   'quality scan': 
+   {node {echo "hello here1!"}
+   }, 
+   'echo task': 
+   {node {echo "hello here2!"}
+   }
+}
