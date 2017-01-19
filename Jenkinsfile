@@ -18,7 +18,9 @@ node {
    
    stage 'Stage 6 - Checkout'
    def mvnHome = tool 'Maven 3.3.9'
-   sh "${mvnHome}/bin/mvn -B verify"
+   
+   stage 'Stage 7 - Checkout'
+   def mvnHome = tool 'Maven 3.3.9'
    git 'https://github.com/natburkova/game-of-life'
    
 }
