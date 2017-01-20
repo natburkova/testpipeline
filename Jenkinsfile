@@ -31,6 +31,6 @@ node {
    first_branch: { node {
    echo "hello master!"
    }}, 
-   second_branch: { node (Ubuntu_vagrant){
+   second_branch: { node ('Ubuntu_vagrant'){
    echo "hello Ubuntu!"
    }})
