@@ -11,8 +11,8 @@ node ('master') {
    
    stage 'Stage 4 - test sleep'
 // pause and job abortion if not approved
-   timeout(time:5, unit:'MINUTES') {
-   input message:'Approve deployment?'
+//   timeout(time:5, unit:'MINUTES') {
+//   input message:'Approve deployment?'
 
 }
 }  
