@@ -11,7 +11,7 @@ node ('master') {
    sh 'sleep 10'
    
    stage 'Stage 5 - Checkout'
-   git 'https://github.com/natburkova/game-of-life'
+   checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', url: 'https://github.com/natburkova/game-of-life']]])
    
    
    stage 'Stage 6 - Installation'
@@ -19,7 +19,7 @@ node ('master') {
  }  
  node ('Ubuntu_vagrant') {
    stage 'Stage 1 on Ubuntu - Checkout'
-   git 'https://github.com/natburkova/game-of-life'
+   checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', url: 'https://github.com/natburkova/game-of-life']]])
  
    stage 'Stage 2 on Ubuntu - Installation'
    withMaven {sh 'mvn clean install'}
