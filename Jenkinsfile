@@ -7,7 +7,7 @@ node ('master') {
    stage 'Stage 3'
    build job: 'hello-task', parameters: [[$class: 'StringParameterValue', name: 'CoolParam', value: 'hello']]
    
-   stage 'Stage 4'
+   stage 'Stage 4 - test sleep'
    sh 'sleep 10'
 }  
   
