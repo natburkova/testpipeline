@@ -8,7 +8,11 @@ node ('master') {
    build job: 'hello-task', parameters: [[$class: 'StringParameterValue', name: 'CoolParam', value: 'hello']]
    
    stage 'Stage 4 - test sleep'
-   sh 'sleep 10'
+   timeout(time:5, unit:'MINUTES') {
+
+    input message:'Approve deployment?', submitter: 'natalia'
+
+}
 }  
   
    stage 'Parallel execution: Checkout and Installation on master and slave'
