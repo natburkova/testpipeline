@@ -16,7 +16,6 @@ node ('master') {
 
 }
 }  
-  
    stage 'Parallel execution: Checkout and Installation on master and slave'
    parallel (
    master: { node ('master') {
