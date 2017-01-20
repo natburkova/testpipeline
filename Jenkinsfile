@@ -14,7 +14,7 @@ node ('master') {
 //   timeout(time:5, unit:'MINUTES') {
 //   input message:'Approve deployment?'
 
-}
+//}
 }  
    stage 'Parallel execution: Checkout and Installation on master and slave'
    parallel (
