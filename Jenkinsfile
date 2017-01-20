@@ -29,4 +29,4 @@ node ('master') {
    withMaven {sh 'mvn clean install'}
    }}
    
-   )}
+   )
