@@ -18,7 +18,7 @@ node {
    
    stage 'Stage 7 - Checkout'
    git 'https://github.com/natburkova/game-of-life'
-   stash includes: 'pom.xml', name: 'pom'
+   
    
    stage 'Stage 8 - echo task'
    echo "hello there!"
@@ -27,7 +27,10 @@ node {
    withMaven {sh 'mvn clean install'}
  }  
  node ('Ubuntu_vagrant') {
- stage 'Stage 1 - Installation'
+   stage 'Stage 1 on Ubuntu - Checkout'
+   git 'https://github.com/natburkova/game-of-life'
+ 
+   stage 'Stage 2 on Ubuntu - Installation'
    withMaven {sh 'mvn clean install'}
  }
    
