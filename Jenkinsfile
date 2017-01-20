@@ -21,11 +21,12 @@ node ('master') {
    parallel (
    master: { node ('master') {
    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', url: 'https://github.com/natburkova/game-of-life']]])
-//  stash name: 'sources', includes: 'pom.xml,src/'
+   stash includes: 'pom.xml', name: 'pom_file'
    withMaven {sh 'mvn clean install'}
    }}, 
    slave: { node ('Ubuntu_vagrant'){
    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', url: 'https://github.com/natburkova/game-of-life']]])
+   unstash 'pom_file'
    withMaven {sh 'mvn clean install'}
    }}
    
