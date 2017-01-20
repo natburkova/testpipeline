@@ -29,8 +29,8 @@ node {
    stage 'Parallel test'
    parallel (
    first_branch: { node {
-   echo "hello here1!"
+   echo "hello master!"
    }}, 
-   second_branch: { node {
-   echo "hello here2!"
+   second_branch: { node (Ubuntu_vagrant){
+   echo "hello Ubuntu!"
    }})
