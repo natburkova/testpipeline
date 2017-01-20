@@ -17,19 +17,16 @@ node ('master') {
    stage 'Stage 6 - Installation'
    withMaven {sh 'mvn clean install'}
  }  
- node ('Ubuntu_vagrant') {
-   stage 'Stage 1 on Ubuntu - Checkout'
-   checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', url: 'https://github.com/natburkova/game-of-life']]])
- 
-   stage 'Stage 2 on Ubuntu - Installation'
-   withMaven {sh 'mvn clean install'}
- }
-   
-   stage 'Parallel test'
+  
+   stage 'Parallel execution: Checkout and Installation on master and slave'
    parallel (
-   first_branch: { node {
-   echo "hello master!"
+   master: { node ('master') {
+   checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', url: 'https://github.com/natburkova/game-of-life']]])
+   withMaven {sh 'mvn clean install'}
    }}, 
-   second_branch: { node ('Ubuntu_vagrant'){
-   echo "hello Ubuntu!"
-   }})
+   slave: { node ('Ubuntu_vagrant'){
+   checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', url: 'https://github.com/natburkova/game-of-life']]])
+   withMaven {sh 'mvn clean install'}
+   }}
+   
+   )}
