@@ -14,10 +14,7 @@ node ('master') {
    git 'https://github.com/natburkova/game-of-life'
    
    
-   stage 'Stage 6 - echo task'
-   echo "hello there!"
-   
-   stage 'Stage 7 - Installation'
+   stage 'Stage 6 - Installation'
    withMaven {sh 'mvn clean install'}
  }  
  node ('Ubuntu_vagrant') {
