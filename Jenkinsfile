@@ -1,6 +1,6 @@
 #!groovy
 node ('master') {
-   stage 'Stage 1'
+   stage 'Stage 1 - echo'
    echo 'Hello World 1'
    input 'Please decide if if should go further?'
 
