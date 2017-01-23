@@ -15,7 +15,7 @@ node ('master') {
 //   input message:'Approve deployment?'
 
 //}
-}  
+ 
    stage 'Parallel checkout execution: Checkout and Installation on master and slave'
    parallel (
    master: { node ('master') {
