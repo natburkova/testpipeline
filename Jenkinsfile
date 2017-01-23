@@ -9,7 +9,7 @@ node ('master') {
    stage 'Stage 3'
    build job: 'hello-task', parameters: [[$class: 'StringParameterValue', name: 'CoolParam', value: 'hello']]
    
-   stage 'Stage 4 - test sleep'
+//   stage 'Stage 4 - test sleep'
 // pause and job abortion if not approved
 //   timeout(time:5, unit:'MINUTES') {
 //   input message:'Approve deployment?'
@@ -20,10 +20,11 @@ node ('master') {
    parallel (
    master: { node ('master') {
    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', url: 'https://github.com/natburkova/game-of-life']]])
-    stash name: "first-stash", includes: "gameoflife-core/*"
+    stash name: "first-stash", includes: "d:\Installed\js_service\workspace\test_pipeline\*"
    withMaven {sh 'mvn clean install'}
    }}, 
    slave: { node ('Ubuntu_vagrant'){
+   dir("/var/lib/jenkins/workspace/test_pipeline")
    unstash 'first-stash'
    withMaven {sh 'mvn clean install'}
    }}
