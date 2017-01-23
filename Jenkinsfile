@@ -25,7 +25,7 @@ node ('master') {
    
    }}, 
    slave: { node ('Ubuntu_vagrant'){
-   unstash 'pom
+   unstash 'pom'
    sh 'cat pom.xml' 
    }}
    
