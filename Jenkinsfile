@@ -20,13 +20,13 @@ node ('master') {
    parallel (
    master: { node ('master') {
    git 'https://github.com/natburkova/game-of-life'
-   stash name: 'whole-git-repo', useDefaultExcludes: false
+   stash includes: 'pom.xml', name: 'pom'
    withMaven {sh 'mvn clean install'}
    
    }}, 
    slave: { node ('Ubuntu_vagrant'){
-   unstash 'whole-git-repo'
-   withMaven {sh 'mvn clean install'}
+   unstash 'pom
+   sh 'cat pom.xml' 
    }}
    
    )
