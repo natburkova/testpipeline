@@ -35,6 +35,6 @@ node ('master') {
    }
 } catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException e) {
     echo "This job was cancelled or aborted"
-    currentBuild.result = 'SUCCESS'
+    currentBuild.result = 'UNSTABLE'
 }
    
