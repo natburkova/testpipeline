@@ -13,7 +13,7 @@ node ('master') {
 */  
 
    stage 'Stage 4 - test timeout'
-   pause and job abortion if not approved
+//   pause and job abortion if not approved
    timeout(time:4, unit:'MINUTES') {
    input message:'Approve deployment?'
 
