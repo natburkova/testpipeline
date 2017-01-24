@@ -33,11 +33,11 @@ node ('master') {
    git 'https://github.com/natburkova/game-of-life'
    sh 'cat pom.xml' 
    }}
-   
+   )
    stage 'Stage 5 - echo'
    echo 'Stage 5 started'
    
-   )
+   
    }
    }
 /* catches FlowInterruptedException in case pipeline frow is aborted due to the absence of reaction in Stage 4
