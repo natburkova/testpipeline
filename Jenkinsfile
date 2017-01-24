@@ -40,15 +40,15 @@ node ('master') {
    
    }
    }
-/* catches FlowInterruptedException in case pipeline frow is aborted due to the absence of reaction in Stage 4
+// catches FlowInterruptedException in case pipeline frow is aborted due to the absence of reaction in Stage 4
  catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException e) {
-    currentBuild.result = 'ABORTED'
+    currentBuild.result = 'SUCCESS'
     echo 'Ignoring abort attempt at this spot'
 } catch (InterruptedException x) {
     currentBuild.result = 'ABORTED'
     echo 'Ignoring abort attempt at this spot'
 }
- */
+
 finally  
 { node('master') {
         sh "echo THE END"
