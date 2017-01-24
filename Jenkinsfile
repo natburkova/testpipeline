@@ -44,4 +44,5 @@ catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException e) {
     echo 'Ignoring abort attempt at this spot'
 }
 */  
-   
+finally  node('master') {
+        sh "echo THE END"
