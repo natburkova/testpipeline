@@ -7,17 +7,18 @@ node ('master') {
    
 /* pause until you approve to go further without job abortion
    input 'Please decide if if should go further?'
- another job is called
+   another job is called
    stage 'Stage 3'
    build job: 'hello-task', parameters: [[$class: 'StringParameterValue', name: 'CoolParam', value: 'hello']]
-   
-   stage 'Stage 4 - test sleep'
+*/  
+
+   stage 'Stage 4 - test timeout'
    pause and job abortion if not approved
-   timeout(time:5, unit:'MINUTES') {
+   timeout(time:4, unit:'MINUTES') {
    input message:'Approve deployment?'
 
 }
-*/
+
  
    stage 'Parallel checkout execution: Checkout and Installation on master and slave'
    parallel (
@@ -33,10 +34,12 @@ node ('master') {
    
    )
    }
-} catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException e) {
-    echo "This job was cancelled or aborted"
-    currentBuild.result = 'UNSTABLE'
-} catch (hudson.AbortException ae) {
-   echo "This job was aborted by some user"
+/*} catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException e) {
+    currentBuild.result = 'ABORTED'
+    echo 'Ignoring abort attempt at this spot'
+} catch (InterruptedException x) {
+    currentBuild.result = 'ABORTED'
+    echo 'Ignoring abort attempt at this spot'
 }
+*/  
    
