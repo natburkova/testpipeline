@@ -7,7 +7,7 @@ try {
   stage('Checkout') { 
       checkout([$class: 'GitSCM', branches: [[name: 'master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PerBuildTag'], [$class: 'CleanCheckout'], [$class: 'UserIdentity', email: 'natalia_burkova@epam.com', name: 'natalia.burkova.epam']], gitTool: 'Default', submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/natburkova/hello-world.git']]])
      currentBuild.displayName = "#${currentBuild.number}"
-     sh '''git tag -a -m messssss
+     sh '''git tag -a -m <messssss>
             git push --follow-tags --verbose '''
    }
    
