@@ -14,16 +14,22 @@ try {
   
     stage('tag') { 
     env.WORKSPACE = pwd()
-    env.TAG = "some_text_${currentBuild.number}"
-    sh '''
-cd ${WORKSPACE}
-#git checkout master
-git config --local push.default simple
-git tag -l ${BUILD_NUMBER}
-    git tag -a -m "Tag has been made by CI" ${BUILD_NUMBER}
-    git push origin HEAD:master --follow-tags --verbose
-'''
+    //env.TAG = "${currentBuild.number}"
+  
+     
+     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'git', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME']]) {
+     sh '''
+      git config --local credential.username ${GIT_USERNAME}
+      git config --local credential.helper store --file="${WORKSPACE}"/git.credentials
+      TAG=${targetRepo}_${targetBranch}.${BUILD_NUMBER}
+      git tag -l ${TAG}
+      git tag -a -m "Tag has been made by CI" ${TAG}
+      git config --local push.default simple
+      git push --follow-tags --verbose
+     '''
+    }
    }
+  
   
   
    
