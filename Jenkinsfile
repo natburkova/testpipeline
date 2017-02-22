@@ -14,10 +14,12 @@ try {
   
     stage('tag') { 
     env.WORKSPACE = pwd()
-    env.TAG = "some_text_${currentBuild.number}"  
-    sh "git tag -l ${env.WORKSPACE}"
-    sh "git tag -a -f -m  ${env.WORKSPACE}"
-    sh "git push --follow-tags --verbose"
+    env.TAG = "some_text_${currentBuild.number}"
+    sh '''
+    git tag -l tag111
+    git tag -a -m "Tag has been made by CI" tag111
+    #git push --follow-tags --verbose
+'''
    }
   
   
