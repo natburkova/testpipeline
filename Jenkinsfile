@@ -16,8 +16,8 @@ try {
     env.WORKSPACE = pwd()
     env.TAG = "some_text_${currentBuild.number}"
     sh '''
-    git tag -l tag111
-    git tag -a -m "Tag has been made by CI" tag111
+git tag -l ${BUILD_NUMBER}
+    git tag -a -m "Tag has been made by CI" ${BUILD_NUMBER}
     git push --follow-tags --verbose
 '''
    }
