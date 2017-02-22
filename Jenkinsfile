@@ -26,7 +26,7 @@ git checkout master
       git tag -l ${TAG}
       git tag -a -m "Tag has been made by CI" ${TAG}
       git config --local push.default simple
-      git push origin --follow-tags --verbose
+      git push --set-upstream origin master --follow-tags --verbose
      '''
     }
    }
