@@ -21,7 +21,7 @@ cd ${WORKSPACE}
 git config --local push.default simple
 git tag -l ${BUILD_NUMBER}
     git tag -a -m "Tag has been made by CI" ${BUILD_NUMBER}
-    git push --follow-tags --verbose
+    git push origin HEAD:master --follow-tags --verbose
 '''
    }
   
