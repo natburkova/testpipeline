@@ -19,7 +19,7 @@ try {
     node('master') {
     echo "Exception thrown:\n ${err}"
     currentBuild.result = 'FAILURE'
-    emailext body: '''Job $JOB_NAME FAILED.\nPlease see $BUILD_URL/console for the error details''', subject: 'BUILD JOB FAILED: $JOB_NAME', to: 'natalia_burkova@epam.com,Yanina_Hulevich@epam.com'
+    emailext body: '''Job $JOB_NAME FAILED.\nPlease see $BUILD_URL/console for the error details''', subject: 'BUILD JOB FAILED: $JOB_NAME', to: 'natalia_burkova@epam.com'
 } 
 }finally {
     node('master') {
