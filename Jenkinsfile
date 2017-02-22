@@ -18,7 +18,7 @@ try {
     sh '''
     git tag -l tag111
     git tag -a -m "Tag has been made by CI" tag111
-    #git push --follow-tags --verbose
+    git push --follow-tags --verbose
 '''
    }
   
