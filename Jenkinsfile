@@ -21,7 +21,8 @@
      sh '''
 git checkout master
       git config --local credential.username ${GIT_USERNAME}
-      git config --local credential.helper store --file="${WORKSPACE}"/git.credentials
+      git config --local credential.password ${GIT_PASSWORD}
+      #git config --local credential.helper store --file="${WORKSPACE}"/git.credentials
       TAG=${targetRepo}_${targetBranch}.${BUILD_NUMBER}
       git tag -l ${TAG}
       git tag -a -m "Tag has been made by CI" ${TAG}
