@@ -3,11 +3,12 @@ try {
  node('master') {
     
     env.WORKSPACE = pwd()
-      
+    env.TAG = "some_text_${currentBuild.number}"  
   stage('Checkout') { 
       checkout([$class: 'GitSCM', branches: [[name: 'master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PerBuildTag'], [$class: 'CleanCheckout'], [$class: 'UserIdentity', email: 'natalia_burkova@epam.com', name: 'natalia.burkova.epam']], gitTool: 'Default', submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/natburkova/hello-world.git']]])
      currentBuild.displayName = "#${currentBuild.number}"
-    
+     sh "git tag -a -m "Tag has been made by Jenkins:" ${TAG}"
+     sh "git push --follow-tags --verbose"
    }
    
 }
