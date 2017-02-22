@@ -3,9 +3,10 @@
  node('master') {
      stage('Checkout') { 
     env.WORKSPACE = pwd()
-    env.TAG = "some_text_${currentBuild.number}"  
+    env.TAG = "some_text_${currentBuild.number}"
+    env.REPO_URL="github.com/natburkova/hello-world.git"
  
-      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', url: 'https://github.com/natburkova/hello-world.git']]])
+      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', url: 'https://${REPO_URL}']]])
      currentBuild.displayName = "#${currentBuild.number}"
      
    }
@@ -19,7 +20,7 @@
      
      withCredentials([usernamePassword(credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
      sh '''
-git remote set-url origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/hello-world.git
+git remote set-url origin https://${GIT_USERNAME}:${GIT_PASSWORD}@REPO_URL
 git checkout master
       
       
