@@ -1,18 +1,18 @@
 #!groovy
 try {
  node('master') {
-    
+     stage('Checkout') { 
     env.WORKSPACE = pwd()
     env.TAG = "some_text_${currentBuild.number}"  
-  stage('Checkout') { 
+ 
       checkout([$class: 'GitSCM', branches: [[name: 'master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PerBuildTag'], [$class: 'CleanCheckout'], [$class: 'UserIdentity', email: 'natalia_burkova@epam.com', name: 'natalia.burkova.epam']], gitTool: 'Default', submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/natburkova/hello-world.git']]])
      currentBuild.displayName = "#${currentBuild.number}"
      
    }
   
   
-  node('master') {
-    
+  
+    stage('tag') { 
     env.WORKSPACE = pwd()
     env.TAG = "some_text_${currentBuild.number}"  
     sh "git tag -a -m <messssss>"
