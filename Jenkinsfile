@@ -1,5 +1,5 @@
 #!groovy
-try {
+//try {
  node('master') {
      stage('Checkout') { 
     env.WORKSPACE = pwd()
@@ -35,7 +35,7 @@ try {
    
 }
 
-}catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException e) {
+/*}catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException e) {
     echo "This job was cancelled or aborted"
     currentBuild.result = 'SUCCESS'
 } catch (err) {
@@ -49,3 +49,4 @@ try {
         sh "echo ${currentBuild.result}"
     }
 }
+*/
