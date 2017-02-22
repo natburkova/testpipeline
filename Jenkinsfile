@@ -17,7 +17,7 @@
     //env.TAG = "${currentBuild.number}"
   
      
-     withCredentials([usernamePassword(credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USER')]) {
+     withCredentials([usernamePassword(credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
      sh '''
       git config --local credential.username ${GIT_USERNAME}
       git config --local credential.helper store --file="${WORKSPACE}"/git.credentials
