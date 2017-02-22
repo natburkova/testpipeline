@@ -19,7 +19,7 @@
      
      withCredentials([usernamePassword(credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
      sh '''
-git remote set-url origin https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/natburkova/hello-world.git
+git remote set-url origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/natburkova/hello-world.git
 git checkout master
       
       
