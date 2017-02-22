@@ -25,7 +25,7 @@
       git tag -l ${TAG}
       git tag -a -m "Tag has been made by CI" ${TAG}
       git config --local push.default simple
-      git push --follow-tags --verbose
+      git push origin --follow-tags --verbose
      '''
     }
    }
