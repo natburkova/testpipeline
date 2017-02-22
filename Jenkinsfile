@@ -15,8 +15,7 @@ try {
     stage('tag') { 
     env.WORKSPACE = pwd()
     env.TAG = "some_text_${currentBuild.number}"  
-    sh "git tag -a -m <messssss>"
-    sh "git push --follow-tags --verbose "
+    sh "git tag -a -m <messssss>; git push --follow-tags --verbose"
    }
   
   
