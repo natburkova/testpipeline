@@ -27,8 +27,8 @@ git checkout master
       TAG=${targetRepo}_${targetBranch}.${BUILD_NUMBER}
       git tag -l ${TAG}
       git tag -a -m "Tag has been made by CI" ${TAG}
-      git config --local push.default simple
-      git push --set-upstream origin master --follow-tags --verbose
+      #git config --local push.default simple
+      #git push --set-upstream origin master --follow-tags --verbose
      '''
     }
    }
