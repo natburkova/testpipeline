@@ -16,7 +16,7 @@ try {
     env.WORKSPACE = pwd()
     env.TAG = "some_text_${currentBuild.number}"  
     sh "git tag -l ${env.TAG}"
-    sh "git tag -a -m "test""
+    sh "git tag -a -m  ${env.TAG}"
     sh "git push --follow-tags --verbose"
    }
   
