@@ -5,7 +5,7 @@
     env.WORKSPACE = pwd()
     env.TAG = "some_text_${currentBuild.number}"  
  
-      checkout([$class: 'GitSCM', branches: [[name: 'master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'PerBuildTag'], [$class: 'CleanCheckout'], [$class: 'UserIdentity', email: 'natalia_burkova@epam.com', name: 'natalia.burkova.epam']], gitTool: 'Default', submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/natburkova/hello-world.git']]])
+      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', url: 'https://github.com/natburkova/hello-world.git']]])
      currentBuild.displayName = "#${currentBuild.number}"
      
    }
@@ -17,7 +17,7 @@
     //env.TAG = "${currentBuild.number}"
   
      
-     withCredentials([usernamePassword(credentialsId: 'git', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+     withCredentials([usernamePassword(credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
      sh '''
 git checkout master
       git config --local credential.username ${GIT_USERNAME}
