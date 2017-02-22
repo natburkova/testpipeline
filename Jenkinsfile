@@ -19,10 +19,10 @@
      
      withCredentials([usernamePassword(credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
      sh '''
+git remote set-url origin https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/natburkova/hello-world.git
 git checkout master
-      git config --local credential.username ${GIT_USERNAME}
-      git config --local credential.password ${GIT_PASSWORD}
-      #git config --local credential.helper store --file="${WORKSPACE}"/git.credentials
+      
+      
       TAG=${targetRepo}_${targetBranch}.${BUILD_NUMBER}
       git tag -l ${TAG}
       git tag -a -m "Tag has been made by CI" ${TAG}
