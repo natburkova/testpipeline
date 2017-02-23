@@ -6,7 +6,7 @@
     env.TAG = "some_text_${currentBuild.number}"
     env.REPO_URL="github.com/natburkova/hello-world.git"
  
-      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', url: 'https://${REPO_URL}']]])
+      checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0ab90352-3a22-4f26-abc0-74f368677e3a', url: 'https://github.com/natburkova/hello-world.git']]])
      currentBuild.displayName = "#${currentBuild.number}"
      
    }
@@ -38,18 +38,3 @@ git checkout master
    
 }
 
-/*}catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException e) {
-    echo "This job was cancelled or aborted"
-    currentBuild.result = 'SUCCESS'
-} catch (err) {
-    node('master') {
-    echo "Exception thrown:\n ${err}"
-    currentBuild.result = 'FAILURE'
-    emailext body: '''Job $JOB_NAME FAILED.\nPlease see $BUILD_URL/console for the error details''', subject: 'BUILD JOB FAILED: $JOB_NAME', to: 'natalia_burkova@epam.com'
-} 
-}finally {
-    node('master') {
-        sh "echo ${currentBuild.result}"
-    }
-}
-*/
